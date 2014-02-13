@@ -1,0 +1,33 @@
+<div class="container">
+  <h1>Welcome to Sinatra!</h1>
+  <p>Hello, world!</p>
+</div>
+
+<div class="container">
+<h3>Create an Event</h3>
+
+  <form name="input" action="/create_event" method="post">
+    <input type="hidden" name="user_id" value="<%=session[:id]%>">
+    Event: <input type="text" name="name">
+    Location: <input type="text" name="location">
+    Start time: <input type="text" name="starts_at">
+    End time: <input type="text" name="ends_at">
+    <input type="submit" value="Submit">
+  </form>
+</div>
+
+<div class="container">
+  <h3>Your Events</h3>
+  <ul>
+  <%@user.created_events.each do |event|%>
+  <li> <a href="/event/<%=event.name%>"><%=event.name%></a></li>
+  <%end%>
+</div>
+
+<div class="container">
+  <h3>Attendend Events</h3>
+  <ul>
+  <%@user.attended_events.each do |event|%>
+  <li> <a href="/event/<%=event.name%>"><%=event.name%></a></li>
+  <%end%>
+</div>

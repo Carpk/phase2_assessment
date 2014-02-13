@@ -1,0 +1,12 @@
+<div class="container">
+  <h1>Welcome to Sinatra!</h1>
+  <p><%=@event.name%></p>
+</div>
+<div class="container">
+<h3>List of attendees</h3>
+  <ul>
+  <%@event.event_attendees.each do |attendee|%>
+    <li><a href="/user/<%=attendee.id%>"><%=attendee.first_name%> <%=attendee.first_name%></a></li>
+  <%end%>
+  </ul>
+</div>
