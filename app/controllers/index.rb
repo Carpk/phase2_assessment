@@ -30,6 +30,14 @@ get "/log_in" do
   erb :log_in
 end
 
+get "/delete/:event_id" do
+    chopping_block = Event.find_by_id(params[:event_id])
+    if session[:id] == chopping_block.user_id
+      chopping_block.destroy
+    end
+    redirect '/my_dashboard'
+end
+
 post '/create_event' do
   Event.create(user_id: params[:user_id],
                name: params[:name],

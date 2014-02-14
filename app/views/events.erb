@@ -6,7 +6,7 @@
 <div class="container">
 <h3>Create an Event</h3>
 
-  <form name="input" action="/create_event" method="post">
+  <form id='js_event'name="input" action="/create_event" method="post">
     <input type="hidden" name="user_id" value="<%=session[:id]%>">
     Event: <input type="text" name="name">
     Location: <input type="text" name="location">
@@ -20,7 +20,7 @@
   <h3>Your Events</h3>
   <ul>
   <%@user.created_events.each do |event|%>
-  <li> <a href="/event/<%=event.name%>"><%=event.name%></a></li>
+  <li> <a href="/event/<%=event.name%>"><%=event.name%></a> <a href="/delete/<%=event.id%>">Delete</a> </li>
   <%end%>
 </div>
 
